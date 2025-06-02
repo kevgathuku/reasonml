@@ -6,3 +6,6 @@
 
 cp -r ./template ./exercises
 mv ./exercises/template ./exercises/$1
+find ./exercises/$1/ -type f | xargs sed -i "s/"'$(name)'"/$1/g"
+test_file=`echo $1_test.re | sed -e "s/\b\(.\)/\u\1/"`
+touch ./exercises/$1/test/$test_file
